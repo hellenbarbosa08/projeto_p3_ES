@@ -65,7 +65,7 @@ class TaskManager:
         return list(self.tasks)
 
 
-# ====== Templates "acadêmicos" ======
+# ======   =------ATIVIDADES ======
 TEMPLATES = [
     (TipoTarefa.LABORATORIO, "Entregar relatório de laboratório", "Organizar dados, concluir análise e formatar o relatório."),
     (TipoTarefa.ESTUDO, "Estudar para a prova ", "Resolver lista de exercícios + revisar teoria (assuntos da prova)."),
