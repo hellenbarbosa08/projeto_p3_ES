@@ -10,11 +10,7 @@ class TaskApp:
             print("\n" + "="*30)
             print("  GERENCIADOR OO DE TAREFAS")
             print("="*30)
-            print("1. Adicionar Tarefa")
-            print("2. Listar Tarefas")
-            print("3. Remover Tarefa")
-            print("4. Alterar Status")
-            print("0. Sair")
+            print("1. Adicionar Tarefa\n2. Listar Tarefas\n3. Remover Tarefa\n4. Alterar Status\n0. Sair")
             
             opcao = input("\nEscolha uma opção: ")
 
@@ -37,18 +33,9 @@ class TaskApp:
         desc = input("Descrição: ")
         print("Status: 1. Disponível | 2. Fazendo | 3. Feita")
         st = input("> ")
-        status = {
-            "1": Status.DISPONIVEL,
-            "2": Status.FAZENDO,
-            "3": Status.FEITA
-        }.get(st, Status.DISPONIVEL)
-
-        AddTaskAction(
-            TipoTarefa.ESTUDO,
-            nome,
-            desc,
-            status
-        ).execute(self.manager)
+        status = {"1": Status.DISPONIVEL, "2": Status.FAZENDO, "3": Status.FEITA}.get(st, Status.DISPONIVEL)
+        
+        AddTaskAction(TipoTarefa.ESTUDO, nome, desc, status).execute(self.manager)
 
     def _menu_remover(self):
         try:
@@ -62,15 +49,11 @@ class TaskApp:
             tid = int(input("Digite o ID da tarefa: "))
             print("Novo Status: 1. Disponível | 2. Fazendo | 3. Feita")
             st = input("> ")
-            status = {
-                "1": Status.DISPONIVEL,
-                "2": Status.FAZENDO,
-                "3": Status.FEITA
-            }.get(st)
-
+            status = {"1": Status.DISPONIVEL, "2": Status.FAZENDO, "3": Status.FEITA}.get(st)
             if status:
                 UpdateStatusAction(tid, status).execute(self.manager)
             else:
                 print("Status inválido.")
         except ValueError:
             print("ID inválido.")
+

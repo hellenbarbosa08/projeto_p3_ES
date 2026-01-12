@@ -38,9 +38,9 @@ class RemoveTaskAction(TaskAction):
         manager.tasks = [t for t in manager.tasks if t.id != self.task_id]
         if len(manager.tasks) < original_len:
             manager.persist()
-            print(f"\n✔ Tarefa {self.task_id} removida.")
+            print(f"\n Tarefa {self.task_id} removida.")
         else:
-            print(f"\n❌ Erro: Tarefa com ID {self.task_id} não encontrada.")
+            print(f"\n Erro: Tarefa com ID {self.task_id} não encontrada.")
 
 class UpdateStatusAction(TaskAction):
     def __init__(self, task_id: int, new_status: Status):
@@ -52,6 +52,6 @@ class UpdateStatusAction(TaskAction):
             if t.id == self.task_id:
                 t.status = self.new_status
                 manager.persist()
-                print(f"\n✔ Status da tarefa {self.task_id} alterado para {self.new_status.value}.")
+                print(f"\n Status da tarefa {self.task_id} alterado para {self.new_status.value}.")
                 return
-        print(f"\n❌ Erro: ID {self.task_id} não encontrado.")
+        print(f"\n Erro: ID {self.task_id} não encontrado.")

@@ -18,3 +18,6 @@ class Task:
     id: int
     tipo: TipoTarefa
     nome: str
+    descricao: str
+    status: Status
+

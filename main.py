@@ -4,7 +4,7 @@ from app import TaskApp
 
 class TaskSystem:
     def __init__(self):
-        # Configura as dependências
+       
         self.storage = JsonFileStorage("tasks_v2.json")
         self.manager = TaskManager(self.storage)
         self.app = TaskApp(self.manager)
