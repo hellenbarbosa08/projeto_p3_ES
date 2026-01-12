@@ -29,13 +29,23 @@ class TaskApp:
                 print("Opção inválida!")
 
     def _menu_adicionar(self):
-        nome = input("Nome: ")
+        nome = input("Nome da Tarefa: ")
         desc = input("Descrição: ")
-        print("Status: 1. Disponível | 2. Fazendo | 3. Feita")
+
+        print("\nSelecione o Tipo:")
+        print("1. Lab | 2. Estudo | 3. Grupo | 4. Projeto | 5. Apresentação")
+        tp = input("> ")
+        tipo = {
+            "1": TipoTarefa.LABORATORIO, "2": TipoTarefa.ESTUDO, 
+            "3": TipoTarefa.GRUPO, "4": TipoTarefa.PROJETO, 
+            "5": TipoTarefa.APRESENTACAO
+        }.get(tp, TipoTarefa.ESTUDO)
+
+        print("\nStatus: 1. Disponível | 2. Fazendo | 3. Feita")
         st = input("> ")
         status = {"1": Status.DISPONIVEL, "2": Status.FAZENDO, "3": Status.FEITA}.get(st, Status.DISPONIVEL)
         
-        AddTaskAction(TipoTarefa.ESTUDO, nome, desc, status).execute(self.manager)
+        AddTaskAction(tipo, nome, desc, status).execute(self.manager)
 
     def _menu_remover(self):
         try:
@@ -56,4 +66,5 @@ class TaskApp:
                 print("Status inválido.")
         except ValueError:
             print("ID inválido.")
+
 
